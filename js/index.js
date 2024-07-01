@@ -126,3 +126,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup
     toggleAuthButtons();
 });
+
+
+const hamburger = document.querySelector('.hamburger');
+const navList = document.querySelector('.nav-list');
+
+hamburger.addEventListener('click', () => {
+    navList.classList.toggle('active');
+});
+
+const modal = document.getElementById('modal');
+const closeBtn = document.querySelector('.close');
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (!loggedIn) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        }
+    });
+});
+
+let loggedIn = true; // Set this based on your login logic
+
+document.getElementById('auth-link').addEventListener('click', () => {
+    loggedIn = !loggedIn;
+    document.getElementById('auth-link').textContent = loggedIn ? 'LogOut' : 'LogIn/SignIn';
+});
