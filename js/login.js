@@ -4,7 +4,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    // Check credentials (replace with actual validation logic)
     if (username === "user" && password === "user") {
         window.location.href = "index_after-Login.html";
     } else {
